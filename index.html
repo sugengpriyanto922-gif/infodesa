@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KabarBumiSamin.com - Portal Berita, ASAMPU & UMKM Blora</title>
+    <!-- Tailwind CSS untuk Desain Modern -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Top Bar / Header -->
+    <header class="bg-emerald-800 text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-seedling text-2xl text-amber-400"></i>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide">KabarBumiSamin<span class="text-amber-400">.com</span></h1>
+                    <p class="text-xs text-emerald-200">Suara Desa, ASAMPU & Kearifan Lokal Blora</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#" class="hover:text-amber-300 transition">Beranda</a>
+                <a href="#berita" class="hover:text-amber-300 transition">Kabar Desa</a>
+                <a href="#tulis-berita" class="hover:text-amber-300 transition">Tulis Berita</a>
+                <a href="#promo-umkm" class="hover:text-amber-300 transition">Promo UMKM</a>
+                <a href="#aduan" class="hover:text-amber-300 transition">Aduan Masyarakat</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- KOLOM UTAMA -->
+        <div class="lg:col-span-2 space-y-8">
+            
+            <!-- Banner / Hero Section -->
+            <section class="bg-gradient-to-r from-emerald-700 to-teal-600 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+                <div class="relative z-10">
+                    <span class="bg-amber-400 text-emerald-950 text-xs font-bold px-3 py-1 rounded-full uppercase">Program ASAMPU Bumi Samin</span>
+                    <h2 class="text-2xl md:text-3xl font-bold mt-3 mb-2">Gerakan ASAMPU Dorong Transparansi & Ekonomi Kerakyatan di Blora</h2>
+                    <p class="text-emerald-100 text-sm mb-4">Warga bersama penggerak desa memperkuat sinergi informasi pembangunan pedesaan dan pemasaran produk lokal...</p>
+                </div>
+            </section>
+
+            <!-- FORMULIR TULIS BERITA BARU DENGAN TEMPAT FOTO -->
+            <section id="tulis-berita" class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100">
+                <div class="flex items-center space-x-2 mb-4">
+                    <i class="fa-solid fa-pen-nib text-emerald-700 text-xl"></i>
+                    <h3 class="text-xl font-bold text-gray-800">Tulis Berita / Kontribusi Warga</h3>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">Punya info kegiatan, prestasi pemuda, atau peristiwa menarik di desamu? Tulis beritanya dan lampirkan foto dokumentasi di sini.</p>
+                
+                <form id="form-tulis-berita" onsubmit="tambahBeritaBaru(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Judul Berita</label>
+                            <input type="text" id="input-judul" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600" placeholder="Contoh: ASAMPU Blora Gelar Pelatihan...">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Wilayah / Kecamatan</label>
+                            <select id="input-kecamatan" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600">
+                                <option value="">-- Pilih Kecamatan --</option>
+                                <option value="Blora Kota">Blora Kota</option>
+                                <option value="Cepu">Cepu</option>
+                                <option value="Randublatung">Randublatung</option>
+                                <option value="Todanan">Todanan</option>
+                                <option value="Jati">Jati</option>
+                                <option value="Jiken">Jiken</option>
+                                <option value="Sambong">Sambong</option>
+                                <option value="Kedungtuban">Kedungtuban</option>
+                                <option value="Kradenan">Kradenan</option>
+                                <option value="Kunduran">Kunduran</option>
+                                <option value="Bogorejo">Bogorejo</option>
+                                <option value="Jepon">Jepon</option>
+                                <option value="Tunjungan">Tunjungan</option>
+                                <option value="Ngawen">Ngawen</option>
+                                <option value="Banjarejo">Banjarejo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- TEMPAT UPLOAD FOTO -->
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Unggah Foto Dokumentasi Kegiatan</label>
+                        <input type="file" id="input-foto" accept="image/*" class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 cursor-pointer border border-gray-300 rounded-lg">
+                        <p class="text-[11px] text-gray-400 mt-1">Format gambar: JPG, PNG, atau JPEG (Disarankan ukuran tidak terlalu besar).</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Isi Berita Lengkap</label>
+                        <textarea id="input-isi" rows="4" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600" placeholder="Tuliskan isi berita selengkap-lengkapnya di sini..."></textarea>
+                    </div>
+                    <button type="submit" class="bg-emerald-700 hover:bg-emerald-800 text-white font-medium px-5 py-2 rounded-lg text-sm transition w-full sm:w-auto">Terbitkan Berita</button>
+                </form>
+            </section>
+
+            <!-- Bagian Kabar Desa (ASAMPU) -->
+            <section id="berita">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-gray-800 border-l-4 border-emerald-700 pl-3">Kabar Desa Terbaru (ASAMPU)</h3>
+                    <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full">Tersimpan Permanen</span>
+                </div>
+
+                <!-- Tempat Daftar Berita Dinamis -->
+                <div id="list-berita" class="space-y-4">
+                    <!-- Berita masuk otomatis -->
+                </div>
+            </section>
+
+            <!-- KOLOM PROMO UMKM -->
+            <section id="promo-umkm" class="bg-white p-6 rounded-2xl shadow-sm border border-amber-200">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-store text-amber-600 text-xl"></i>
+                        <h3 class="text-xl font-bold text-gray-800">Kolom Promo UMKM Desa</h3>
+                    </div>
+                    <span class="text-xs bg-amber-100 text-amber-800 font-bold px-2.5 py-1 rounded-full">Katalog Produk</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">Dukung produk lokal Bumi Samin! Dapatkan penawaran menarik dari UMKM pedesaan Blora langsung melalui WhatsApp resmi kami di <strong class="text-emerald-700">082133099881</strong>.</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Item Promo 1 -->
+                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 p-4 rounded-xl flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold bg-amber-200 text-amber-900 px-2 py-0.5 rounded">Randublatung</span>
+                            <h4 class="font-bold text-base text-gray-800 mt-2">Keripik Singkong & Jati Asli</h4>
+                            <p class="text-xs text-gray-600 mt-1">Garing, gurih, dan diolah langsung oleh perajin rumahan desa. Cocok untuk oleh-oleh.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-amber-200 flex justify-between items-center">
+                            <span class="text-xs font-bold text-emerald-700">Rp 15.000 / bungkus</span>
+                            <a href="https://wa.me/6282133099881?text=Halo%20Admin,%20saya%20tertarik%20pesan%20produk%20UMKM:%20Keripik%20Singkong%20Blora" target="_blank" class="bg-emerald-700 hover:bg-emerald-800 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1">
+                                <i class="fa-brands fa-whatsapp"></i> Beli
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Item Promo 2 -->
+                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 p-4 rounded-xl flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold bg-amber-200 text-amber-900 px-2 py-0.5 rounded">Kradenan</span>
+                            <h4 class="font-bold text-base text-gray-800 mt-2">Madu Hutan Asli Kendeng</h4>
+                            <p class="text-xs text-gray-600 mt-1">Madu murni dari kawasan pegunungan kapur Kendeng dan hutan jati Blora.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-amber-200 flex justify-between items-center">
+                            <span class="text-xs font-bold text-emerald-700">Rp 75.000 / botol</span>
+                            <a href="https://wa.me/6282133099881?text=Halo%20Admin,%20saya%20tertarik%20pesan%20produk%20UMKM:%20Madu%20Hutan%20Kendeng" target="_blank" class="bg-emerald-700 hover:bg-emerald-800 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1">
+                                <i class="fa-brands fa-whatsapp"></i> Beli
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Kolom Aduan Masyarakat -->
+            <section id="aduan" class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="flex items-center space-x-2 mb-4">
+                    <i class="fa-solid fa-bullhorn text-amber-600 text-xl"></i>
+                    <h3 class="text-xl font-bold text-gray-800">Kolom Aduan Masyarakat</h3>
+                </div>
+                <form id="form-aduan" onsubmit="kirimAduan(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Nama Lengkap</label>
+                        <input type="text" id="nama-pengadu" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600" placeholder="Masukkan nama Anda">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Asal Desa / Kecamatan</label>
+                        <input type="text" id="lokasi-aduan" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600" placeholder="Contoh: Desa Medalem, Kradenan">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Isi Laporan / Aduan</label>
+                        <textarea id="pesan-aduan" rows="3" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600" placeholder="Tuliskan aduan Anda secara jelas..."></textarea>
+                    </div>
+                    <button type="submit" class="bg-emerald-700 hover:bg-emerald-800 text-white font-medium px-5 py-2 rounded-lg text-sm transition w-full sm:w-auto">Kirim Aduan</button>
+                </form>
+
+                <div class="mt-6 pt-6 border-t border-gray-100">
+                    <h4 class="font-bold text-sm text-gray-700 mb-3">Aduan Terbaru Warga:</h4>
+                    <div id="list-aduan" class="space-y-3">
+                        <!-- Aduan masuk otomatis -->
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- KOLOM SAMPING -->
+        <div class="space-y-6">
+            <!-- Kontak Resmi -->
+            <section class="bg-emerald-800 text-white p-5 rounded-2xl shadow-sm">
+                <div class="flex items-center space-x-2 mb-2">
+                    <i class="fa-solid fa-headset text-amber-400"></i>
+                    <h3 class="font-bold text-base">Kontak Redaksi & ASAMPU</h3>
+                </div>
+                <p class="text-xs text-emerald-100 mb-3">Hubungi layanan informasi resmi kami untuk konsultasi UMKM, pasang iklan, atau rilis berita:</p>
+                <a href="https://wa.me/6282133099881" target="_blank" class="bg-amber-400 hover:bg-amber-500 text-emerald-950 font-bold px-4 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 transition shadow">
+                    <i class="fa-brands fa-whatsapp text-base"></i> 0821-3309-9881
+                </a>
+            </section>
+
+            <section class="bg-white p-4 rounded-2xl shadow-sm border border-gray-200 text-center">
+                <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-xl p-6 flex flex-col items-center justify-center">
+                    <i class="fa-solid fa-rectangle-ad text-3xl text-gray-400 mb-2"></i>
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Ruang Iklan / Sponsored</span>
+                    <p class="text-xs text-gray-500 mt-1">Pasang produk UMKM atau event Anda di sini.</p>
+                </div>
+            </section>
+
+            <section class="bg-emerald-900 text-white p-5 rounded-2xl shadow-sm">
+                <div class="flex items-center space-x-2 mb-3">
+                    <i class="fa-solid fa-store text-amber-400"></i>
+                    <h3 class="font-bold text-base">UMKM Unggulan Blora</h3>
+                </div>
+                <div class="space-y-3">
+                    <div class="bg-emerald-800/60 p-3 rounded-xl border border-emerald-700/50">
+                        <h4 class="font-bold text-sm text-amber-300">Kerajinan Kayu Jati Blora</h4>
+                        <p class="text-xs text-emerald-200 mt-1">Furniture kayu jati asli dari perajin lokal Randublatung.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <!-- POP-UP DETAIL BACA BERITA (MODAL) -->
+    <div id="modal-baca" class="fixed inset-0 bg-black/50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="tutupModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-xl font-bold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <span id="modal-kecamatan" class="text-xs text-emerald-600 font-semibold uppercase bg-emerald-50 px-2.5 py-1 rounded-md"></span>
+            <h2 id="modal-judul" class="text-xl md:text-2xl font-bold text-gray-800 mt-3 mb-4"></h2>
+            
+            <!-- Tempat Gambar di Modal -->
+            <div id="modal-container-gambar" class="mb-4 hidden">
+                <img id="modal-gambar" src="" alt="Foto Berita" class="w-full h-64 object-cover rounded-xl shadow-sm">
+            </div>
+
+            <div id="modal-isi" class="text-sm text-gray-600 leading-relaxed space-y-3 whitespace-pre-line border-t border-b border-gray-100 py-4 mb-4"></div>
+            
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <a id="modal-share-wa" href="#" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl text-xs font-semibold transition flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-base"></i> Bagikan Berita ini ke WhatsApp
+                </a>
+                <button onclick="tutupModal()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-xl text-xs font-semibold transition">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-950 text-white py-6 mt-12 text-center text-xs">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2026 KabarBumiSamin.com - Portal Informasi & Aspirasi Masyarakat Kabupaten Blora.</p>
+            <p class="text-emerald-400 mt-1">Layanan Informasi / WhatsApp: 0821-3309-9881</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Lengkap -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            tampilkanBerita();
+            tampilkanAduan();
+        });
+
+        // Fungsi Tambah Berita Baru dengan Gambar
+        function tambahBeritaBaru(event) {
+            event.preventDefault();
+
+            const judul = document.getElementById('input-judul').value;
+            const kecamatan = document.getElementById('input-kecamatan').value;
+            const isi = document.getElementById('input-isi').value;
+            const inputFoto = document.getElementById('input-foto');
+
+            if (inputFoto.files && inputFoto.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const fotoBase64 = e.target.result;
+                    simpanBeritaData(judul, kecamatan, isi, fotoBase64);
+                };
+                reader.readAsDataURL(inputFoto.files[0]);
+            } else {
+                simpanBeritaData(judul, kecamatan, isi, "");
+            }
+        }
+
+        function simpanBeritaData(judul, kecamatan, isi, foto) {
+            const beritaBaru = { id: Date.now(), judul, kecamatan, isi, foto };
+
+            let daftarBerita = JSON.parse(localStorage.getItem('kabar_berita')) || [];
+            daftarBerita.unshift(beritaBaru);
+            localStorage.setItem('kabar_berita', JSON.stringify(daftarBerita));
+
+            document.getElementById('form-tulis-berita').reset();
+            tampilkanBerita();
+            alert("Berita dan foto berhasil diterbitkan dan tersimpan secara permanen di perangkat ini!");
+        }
+
+        // Fungsi Menampilkan Berita
+        function tampilkanBerita() {
+            const listBerita = document.getElementById('list-berita');
+            let daftarBerita = JSON.parse(localStorage.getItem('kabar_berita')) || [];
+
+            if (daftarBerita.length === 0) {
+                daftarBerita = [
+                    {
+                        id: 1,
+                        kecamatan: "Kradenan",
+                        judul: "ASAMPU Blora Luncurkan Program Pendampingan UMKM & Keterbukaan Informasi Desa 2026",
+                        isi: "Program ASAMPU (Aspirasi dan Informasi Desa Samin Peduli Pembangunan) resmi memperluas jangkauan layanannya di Kabupaten Blora pada tahun 2026 ini. Langkah strategis ini diambil guna memperkuat transparansi penggunaan dana desa sekaligus mendongkrak perekonomian masyarakat melalui digitalisasi produk lokal.\n\nDalam keterangannya, koordinator program menyampaikan bahwa melalui platform ini, warga dari berbagai kecamatan seperti Kradenan, Randublatung, hingga Cepu kini bisa lebih mudah menyuarakan potensi desa, melaporkan kendala infrastruktur, hingga memasarkan produk UMKM secara langsung dengan dukungan layanan WhatsApp resmi di nomor 082133099881.\n\nSinergi antara pemerintah desa dan warga ini diharapkan mampu mewujudkan kemandirian desa secara menyeluruh di Bumi Samin.",
+                        foto: ""
+                    }
+                ];
+            }
+
+            listBerita.innerHTML = "";
+            daftarBerita.forEach((item) => {
+                const cuplikan = item.isi.length > 120 ? item.isi.substring(0, 120) + "..." : item.isi;
+                const textWA = `*${item.judul}*\n\nWilayah: Kecamatan ${item.kecamatan}\n\n${item.isi}\n\n_Sumber: KabarBumiSamin.com (ASAMPU)_`;
+                const urlWA = `https://api.whatsapp.com/send?text=${encodeURIComponent(textWA)}`;
+
+                const div = document.createElement('div');
+                div.className = "bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-4 berita-item";
+                
+                let bagianGambar = "";
+                if (item.foto) {
+                    bagianGambar = `<div class="md:w-1/3 flex-shrink-0"><img src="${item.foto}" alt="Foto Berita" class="w-full h-36 object-cover rounded-xl border border-gray-100"></div>`;
+                }
+
+                div.innerHTML = `
+                    ${bagianGambar}
+                    <div class="flex flex-col justify-between flex-grow gap-3">
+                        <div>
+                            <span class="text-xs text-emerald-600 font-semibold uppercase">Kecamatan ${item.kecamatan}</span>
+                            <h4 class="font-bold text-lg text-gray-800 mt-1">${item.judul}</h4>
+                            <p class="text-sm text-gray-600 mt-1">${cuplikan}</p>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-gray-100">
+                            <div class="flex items-center gap-2">
+                                <button onclick="bukaBerita(${item.id})" class="bg-emerald-700 hover:bg-emerald-800 text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5">
+                                    <i class="fa-solid fa-book-open"></i> Baca Selengkapnya
+                                </button>
+                                <a href="${urlWA}" target="_blank" class="bg-green-50 text-green-700 hover:bg-green-600 hover:text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5">
+                                    <i class="fa-brands fa-whatsapp text-sm"></i> Share WA
+                                </a>
+                            </div>
+                            <button onclick="hapusBerita(${item.id})" class="bg-red-50 text-red-600 hover:bg-red-600 hover:text-white px-3 py-1.5 rounded-lg text-xs font-medium transition flex items-center gap-1">
+                                <i class="fa-solid fa-trash"></i> Hapus
+                            </button>
+                        </div>
+                    </div>
+                `;
+                listBerita.appendChild(div);
+            });
+        }
+
+        // Fungsi Membuka Modal Baca Berita
+        function bukaBerita(id) {
+            let daftarBerita = JSON.parse(localStorage.getItem('kabar_berita')) || [];
+            const berita = daftarBerita.find(item => item.id === id);
+
+            if (berita) {
+                document.getElementById('modal-kecamatan').innerText = "Kecamatan " + berita.kecamatan;
+                document.getElementById('modal-judul').innerText = berita.judul;
+                document.getElementById('modal-isi').innerText = berita.isi;
+
+                const containerGambar = document.getElementById('modal-container-gambar');
+                const imgModal = document.getElementById('modal-gambar');
+                if (berita.foto) {
+                    imgModal.src = berita.foto;
+                    containerGambar.classList.remove('hidden');
+                } else {
+                    containerGambar.classList.add('hidden');
+                }
+
+                const textWA = `*${berita.judul}*\n\nWilayah: Kecamatan ${berita.kecamatan}\n\n${berita.isi}\n\n_Sumber: KabarBumiSamin.com (ASAMPU)_`;
+                document.getElementById('modal-share-wa').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(textWA)}`;
+
+                document.getElementById('modal-baca').classList.remove('hidden');
+            }
+        }
+
+        function tutupModal() {
+            document.getElementById('modal-baca').classList.add('hidden');
+        }
+
+        function hapusBerita(id) {
+            if (confirm("Apakah Anda yakin ingin menghapus berita ini?")) {
+                let daftarBerita = JSON.parse(localStorage.getItem('kabar_berita')) || [];
+                daftarBerita = daftarBerita.filter(item => item.id !== id);
+                localStorage.setItem('kabar_berita', JSON.stringify(daftarBerita));
+                tampilkanBerita();
+                tutupModal();
+            }
+        }
+
+        function kirimAduan(event) {
+            event.preventDefault();
+            const nama = document.getElementById('nama-pengadu').value;
+            const lokasi = document.getElementById('lokasi-aduan').value;
+            const pesan = document.getElementById('pesan-aduan').value;
+
+            const aduanBaru = { id: Date.now(), nama, lokasi, pesan };
+            let daftarAduan = JSON.parse(localStorage.getItem('kabar_aduan')) || [];
+            daftarAduan.unshift(aduanBaru);
+            localStorage.setItem('kabar_aduan', JSON.stringify(daftarAduan));
+
+            document.getElementById('form-aduan').reset();
+            tampilkanAduan();
+            alert("Aduan berhasil dikirim dan tersimpan!");
+        }
+
+        function tampilkanAduan() {
+            const listAduan = document.getElementById('list-aduan');
+            let daftarAduan = JSON.parse(localStorage.getItem('kabar_aduan')) || [];
+
+            listAduan.innerHTML = "";
+            daftarAduan.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "bg-amber-50 border-l-4 border-amber-500 p-3 rounded-r-lg text-sm";
+                div.innerHTML = `
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-gray-800">${item.nama}</span>
+                        <span class="text-xs text-gray-500">${item.lokasi}</span>
+                    </div>
+                    <p class="text-gray-600 text-xs">${item.pesan}</p>
+                `;
+                listAduan.appendChild(div);
+            });
+        }
+    </script>
+</body>
+</html>
